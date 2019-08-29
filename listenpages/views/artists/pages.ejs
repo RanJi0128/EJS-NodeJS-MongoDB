@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="eXGa2uT6Sny48hiyXCRWPhlgIlTiSef_EvJtLZU84yQ" />
+	<meta name = "format-detection" content = "telephone=no">
+
+	<title>ListenPages</title>
+	<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+	<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+	<link href="/stylesheets/all.min.css" rel="stylesheet">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+	<link href="/stylesheets/ss_custom.css" rel="stylesheet">
+    <link href="/stylesheets/ss_responsive.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
+    <!-- start Gist JS code--><script>    (function(d,h,w){var gist=w.gist=w.gist||[];gist.methods=['trackPageView','identify','track','setAppId'];gist.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);gist.push(e);return gist;}};for(var i=0;i<gist.methods.length;i++){var c=gist.methods[i];gist[c]=gist.factory(c)}s=d.createElement('script'),s.src="https://widget.getgist.com",s.async=!0,e=d.getElementsByTagName(h)[0],e.appendChild(s),s.addEventListener('load',function(e){},!1),gist.setAppId("nmovrwmg"),gist.trackPageView()})(document,'head',window);</script><!-- end Gist JS code-->
+</head>
+<body>
+	<div class="main_wrapper">
+		<div class="header_top">
+			<div class="logo pull-left">
+                <img src="/images/logo.png">
+			</div>
+			<div class="menu_bar">
+				<nav class="navbar navbar-default">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="close_menu"><img src="/images/icons/cancel.png"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a href="/dashboard">Path</a></li>
+							<li  class="active"><a href="/pages">Pages</a></li>
+							<li><a href="/settings">Settings</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><button class="btn btn_primary create-new-btn">New</button></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="sidebar_left">
+			<span class="menu_btn"><i class="fa fa-angle-down"></i></span>
+			<div class="menu_bar_side">
+				<ul class="menu_item_side">
+					<li class="active">
+						<a href="#">
+							<i class="fas fa-tachometer-alt"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fas fa-comments"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fas fa-folder-open"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" id="logout-btn">
+							<i class="fas fa fa-sign-out"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="main_body height_vh70" id="no-page-wrapper">
+			<div class="center_frame nolt_page">
+				<h2>You have no Listen Pages</h2>
+                <div class="form_frame">
+                    <button class="btn btn-sm btn_rounded btn_primary create-new-btn">New Listen Page</button>
+                </div>
+			</div>
+        </div>
+
+        <div class="main_body" id="list-page-wrapper">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="left_bar">
+                        <div class="box_frame">
+                            <h4 class="subtitle">Pages</h4>
+                            <ul class="menu_item">
+                            </ul>
+                        </div>
+                        <!-- <div class="text-center">
+                            <a href="#" class="txt_upper">View More</a>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="right_bar">
+                        <div class="box_frame">
+                            <h4 class="subtitle">Listener Data</h4>
+                            <div class="filter">
+                                <ul class="list-inline">
+                                    <li>
+                                        <div class="select_frame">
+                                            <div class="choose_box">
+                                                <label id="region-text">
+                                                    Choose region
+                                                    <i class="fa fa-angle-right"></i>
+                                                </label>
+                                            </div>
+                                            <div class="option_box" id="region-option">
+                                                <label code="EU">Europe</label>
+                                                <label code="AS">Asia</label>
+                                                <label code="OC">Oceania</label>
+                                                <label code="AN">Antarctica</label>
+                                                <label code="AF">Africa</label>
+                                                <label code="NA">North America</label>
+                                                <label code="SA">South America</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="select_frame">
+                                            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                                <i class="fa fa-calendar"></i>&nbsp;
+                                                <span></span> <i class="fa fa-caret-down"></i>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="graph">
+                            <img src="/images/map.jpg">
+                        </div>
+
+                        <div class="box_frame">
+                            <h4 class="subtitle">Traffic</h4>
+                            <div class="tbl_flex">
+                                <div class="tbl_row">
+                                    <div class="tbl_data">
+                                        <span><img src="/images/icons/icon_fb.png"></span>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label>Facebook</label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="fb-num"></label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="fb-rate"></label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="fb-level"></label>
+                                    </div>
+
+                                </div>
+                                <div class="tbl_row">
+                                    <div class="tbl_data">
+                                        <span><img src="/images/icons/icon_twitter.png"></span>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label>Twitter</label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="tt-num"></label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="tt-rate"></label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="tt-level"></label>
+                                    </div>
+
+                                </div>
+                                <div class="tbl_row">
+                                    <div class="tbl_data">
+                                        <span><img src="/images/icons/icon_insta.png"></span>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label>Instagram</label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="in-num"></label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="in-rate"></label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="in-level"></label>
+                                    </div>
+
+                                </div>
+                                    <div class="tbl_row">
+                                    <div class="tbl_data">
+                                        <span><img src="/images/icons/icon_pinterest.png"></span>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label>Pinterest</label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="pi-num"></label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="pi-rate"></label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="pi-level"></label>
+                                    </div>
+
+                                </div>
+                                    <div class="tbl_row">
+                                    <div class="tbl_data">
+                                        <span><img src="/images/icons/icon_web.png"></span>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label>Website</label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="ws-num"></label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="ws-rate"></label>
+                                    </div>
+                                    <div class="tbl_data">
+                                        <label id="ws-level"></label>
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+	<script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>  
+
+    <script type="text/javascript">
+        var init = function() {
+
+            if (!localStorage['user']) {
+                location.href = '/';
+            }
+            else {
+                var dateOpt = { year: 'numeric', month: 'long', day: 'numeric' };
+
+                $.ajax({
+                    url: '/get_page_list?user_id=' + localStorage['user'],
+                    type: 'GET',
+                    success: function(data){
+
+                        if (data.length > 0) {
+                            page_id = data[0]._id;
+
+                            getAnalysisData(page_id, region, date_range);
+
+                            var htmlStr = "";
+
+                            for(var i = 0; i < data.length; i ++) {
+                                if (i == 0) {
+                                    htmlStr += `<li>
+                                        <label onclick="selectPage('` + data[i]._id + `')">
+                                            <input type="radio" name="pages">
+                                            <span class="cst_rd cst_rd_active" id="radio_`+ data[i]._id +`"></span>` +
+                                            data[i].name +
+                                            `<small>` + new Date(data[i].created_at).toLocaleDateString('en-US', dateOpt) + `</small>
+                                            <i class="fa fa-angle-right"></i>
+                                        </label>
+                                        <small>listenpages.com/` + data[i].short_id + `</small>
+                                    </li>`;
+                                } else {
+                                    htmlStr += `<li>
+                                        <label onclick="selectPage('` + data[i]._id + `')">
+                                            <input type="radio" name="pages">
+                                            <span class="cst_rd" id="radio_`+ data[i]._id +`"></span>` +
+                                            data[i].name +
+                                            `<small>` + new Date(data[i].created_at).toLocaleDateString('en-US', dateOpt) + `</small>
+                                            <i class="fa fa-angle-right"></i>
+                                        </label>
+                                        <small>listenpages.com/` + data[i].short_id + `</small>
+                                    </li>`;
+                                }
+                                
+                            }
+
+                            $(".menu_item").html(htmlStr);
+
+                            $('#no-page-wrapper').css('display', 'none');
+                        } else {
+                            $('#list-page-wrapper').css('display', 'none');
+                        }
+                    }
+                });
+            }
+        }
+
+        var getAnalysisData = function(page, region, date) {
+            $.ajax({
+                url: '/get_analysis_data',
+                type: 'POST',
+                data : {
+                    page_id: page,
+                    region: region,
+                    start: date.start,
+                    end: date.end
+                },
+                success: function(data){
+                    if (data.error) {
+                        alert(data.msg);
+                    } else {
+                        console.log('analysis data...', data);
+
+                        $("#fb-num").html(data.fbNum);
+                        $("#fb-rate").html(data.fbRate + '%');
+                        $("#fb-level").html(data.fbLevel);
+                        $("#tt-num").html(data.ttNum);
+                        $("#tt-rate").html(data.ttRate + '%');
+                        $("#tt-level").html(data.ttLevel);
+                        $("#in-num").html(data.inNum);
+                        $("#in-rate").html(data.inRate + '%');
+                        $("#in-level").html(data.inLevel);
+                        $("#pi-num").html(data.piNum);
+                        $("#pi-rate").html(data.piRate + '%');
+                        $("#pi-level").html(data.piLevel);
+                        $("#ws-num").html(data.wsNum);
+                        $("#ws-rate").html(data.wsRate + '%');
+                        $("#ws-level").html(data.wsLevel);
+                    }
+                }
+            });
+        }
+
+        var selectPage = function(id) {
+            page_id = id;
+
+            date_range = {
+                start: new Date(moment().subtract(29, 'days')).getTime(),
+                end: new Date(moment()).getTime()
+            };
+
+            var els = $('.menu_item .cst_rd');
+            
+            for (var i = 0; i < els.length; i ++) {
+                $(els[i]).removeClass('cst_rd_active');
+            }
+
+            $("#radio_" + id).addClass('cst_rd_active');
+
+            getAnalysisData(page_id, region, date_range);
+
+            event.preventDefault()
+        }
+
+        var start = moment().subtract(29, 'days');
+        var end = moment();
+
+        var page_id = "";
+        var region = "";
+        var date_range = {
+            start: new Date(start).getTime(),
+            end: new Date(end).getTime()
+        };
+
+        function cb(start, end) {
+            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+            date_range.start = new Date(start).getTime();
+            date_range.end = new Date(end).getTime();
+
+            if (page_id != "")
+                getAnalysisData(page_id, region, date_range);
+        }
+
+        $('#reportrange').daterangepicker({
+            startDate: start,
+            endDate: end,
+            ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+        }, cb);
+
+        cb(start, end);
+
+
+        $('.select_frame').click(function(){
+            if ($(this).find('.option_box').hasClass('mx_height')) {
+
+                $(this).find('.option_box').removeClass('mx_height');
+                $(this).find('.choose_box label i').removeClass('rotate');
+                
+            }
+            else
+            {
+                $(this).find('.option_box').addClass('mx_height');
+                $(this).find('.choose_box label i').addClass('rotate');
+            }
+        });
+
+        $('.sidebar_left .menu_btn').click(function(){
+            if ($('.main_body').hasClass('sidebar_open')) {
+                $('.main_body').removeClass('sidebar_open')
+                $('.sidebar_left').hasClass('sidebar_open')
+                $('.sidebar_left').removeClass('sidebar_open')
+            }
+
+            else{
+                $('.main_body').addClass('sidebar_open')
+                $('.sidebar_left').addClass('sidebar_open')
+            }
+
+        });
+
+        $('.create-new-btn').on('click', function() {
+            location.href = "/create_page";
+        });
+
+        $('#logout-btn').on('click', function() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('maximum_sale');
+            location.href = '/';
+        });
+
+        $('#region-option label').on('click', function() {
+            var that = $(this);
+
+            region = $(this).attr('code');
+
+            date_range = {
+                start: new Date(moment().subtract(29, 'days')).getTime(),
+                end: new Date(moment()).getTime()
+            };
+
+            getAnalysisData(page_id, region, date_range);
+
+            setTimeout(function(){ 
+                $('#region-text').html(that.html() + `<i class="fa fa-angle-right"></i>`);
+            }, 250);
+        });
+
+        init();
+    </script>
+
+</body>
+</html>

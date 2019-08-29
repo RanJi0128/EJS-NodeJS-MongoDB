@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="google-site-verification" content="eXGa2uT6Sny48hiyXCRWPhlgIlTiSef_EvJtLZU84yQ" />
+	<meta name = "format-detection" content = "telephone=no">
+
+	<title>ListenPages</title>
+	<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+	<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+	<link href="/stylesheets/all.min.css" rel="stylesheet">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+	<link href="/stylesheets/ss_custom.css" rel="stylesheet">
+	<link href="/stylesheets/ss_responsive.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
+	<!-- start Gist JS code--><script>    (function(d,h,w){var gist=w.gist=w.gist||[];gist.methods=['trackPageView','identify','track','setAppId'];gist.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);gist.push(e);return gist;}};for(var i=0;i<gist.methods.length;i++){var c=gist.methods[i];gist[c]=gist.factory(c)}s=d.createElement('script'),s.src="https://widget.getgist.com",s.async=!0,e=d.getElementsByTagName(h)[0],e.appendChild(s),s.addEventListener('load',function(e){},!1),gist.setAppId("nmovrwmg"),gist.trackPageView()})(document,'head',window);</script><!-- end Gist JS code-->
+</head>
+<body id="login_signup">
+	<div class="main_wrapper">
+		<div class="main_body login_page">
+			<div class="center_frame">
+				<div class="login_frame">
+					<img src="/images/logo1.png">
+					<h3>Log In</h3>
+					<form action="/login_user" method="post" id="loginForm">
+						<div class="form_frame">
+                            <input type="email" name="email" placeholder="Enter your email" required class="form-control email-btn">
+                            <input type="password" name="password" placeholder="Enter your Password" required class="form-control">
+							<button class="btn btn_rounded btn_primary"  id="login-btn">Login</button>
+							<div>
+								<a href="#">Forgot your email? Or </a><a href="" class="go-signup">Sign Up</a>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="login_footer">
+					<ul class="list-inline">
+						<li><a href="/">Home</a></li>
+						<li><a href="/terms">Terms & Conditions</a></li>
+						<li><a href="/privacy">Privacy Policy</a></li>
+						<li><a href="/cookie">Cookie Policy</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/javascripts/jquery.min.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
+
+	<script>
+
+		if (localStorage['user']) {
+            location.href = '/dashboard';
+        }
+
+        $('#loginForm').submit(function(e){
+            e.preventDefault();
+
+            $.ajax({
+                url: $('#loginForm').attr('action'),
+                type: 'POST',
+                data : $('#loginForm').serialize(),
+                success: function(data){
+                    if (data.error) {
+                        alert(data.msg);
+                    } else {
+						localStorage.user = data.data._id;
+						localStorage.maximum_sale = data.data.maximum_sale;
+
+                        location.href = '/dashboard';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="google-site-verification" content="eXGa2uT6Sny48hiyXCRWPhlgIlTiSef_EvJtLZU84yQ" />
+	<meta name = "format-detection" content = "telephone=no">
+
+	<title>ListenPages</title>
+	<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+	
+	<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+	<link href="/stylesheets/all.min.css" rel="stylesheet">
+	<!-- <link href="/stylesheets/font-awesome.min.css" rel="stylesheet"> -->
+	<link href="/stylesheets/ss_custom.css" rel="stylesheet">
+	<link href="/stylesheets/ss_responsive.css" rel="stylesheet">
+	<link href="/stylesheets/Chart.min.css" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet"> -->
+	<!-- start Gist JS code--><script>    (function(d,h,w){var gist=w.gist=w.gist||[];gist.methods=['trackPageView','identify','track','setAppId'];gist.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);gist.push(e);return gist;}};for(var i=0;i<gist.methods.length;i++){var c=gist.methods[i];gist[c]=gist.factory(c)}s=d.createElement('script'),s.src="https://widget.getgist.com",s.async=!0,e=d.getElementsByTagName(h)[0],e.appendChild(s),s.addEventListener('load',function(e){},!1),gist.setAppId("nmovrwmg"),gist.trackPageView()})(document,'head',window);</script><!-- end Gist JS code-->
+</head>
+<body>
+	<div class="main_wrapper" style="background: #fff;">
+		<div class="header_top">
+			<div class="logo pull-left">
+				<img src="/images/listenpages-logo.svg" style="height:27px; margin-top:-9px; margin-bottom:-17px">
+			</div>
+			<div class="menu_bar">
+				<nav class="navbar navbar-default">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="close_menu"><img src="/images/icons/cancel.png"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="/dashboard" style="font-size: 13px">Path</a></li>
+							<li><a href="/pages" style="font-size: 13px; color: #dcdcdc">Pages</a></li>
+							<li><a href="/settings" style="font-size: 13px; color: #dcdcdc">Settings</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><button class="btn btn_primary create-new-btn">New</button></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="sidebar_left">
+			<span class="menu_btn"><i class="fa fa-angle-down"></i></span>
+			<div class="menu_bar_side">
+				<ul class="menu_item_side">
+					<li class="active">
+						<a href="#">
+							<i class="fas fa-tachometer-alt"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fas fa-comments"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fas fa-folder-open"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" id="logout-btn">
+							<i class="fas fa fa-sign-out"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="main_body sec_listenPage">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="right_bar" style="border: none;">
+						<div class="box_frame">
+							<div class="graph_data">
+								<div class="row">
+									<div class="col-md-4 col-sm-4">
+										<div class="text-right">
+											<div class="graph_data_box">
+												<div class="count"><span id="total-views"></span></div>
+												<h5 style="font-size: 23px; color: #5d5d5d; font-family: Gordita-Regular">views</h5>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-4">
+										<div class="text-center">
+											<div class="graph_data_box">
+												<div class="count"><span id="social-rate"></span></div>
+												<h5 style="font-size: 23px; color: #5d5d5d; font-family: Gordita-Regular">active listeners</h5>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-4">
+										<div class="text-left">
+											<div class="graph_data_box">
+												<div class="count"><span id="max-events"></span></div>
+												<h5 style="font-size: 23px; color: #5d5d5d; font-family: Gordita-Regular">max events</h5>
+												<!-- <h5><span class="txt_primary" id="max-events-rate"></span></h5> -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box_frame">
+							<div class="graph_box" style="height: 560px;">
+								<img id="tutarialId"  class="img-responsive" src="http://www.gossettmktg.com/video/dangot.png"  />
+								<div id="checkId" class="checkbox">
+									<label>
+										<input id="checkboxId" type="checkbox"> Don't show this again!
+									</label>
+								</div>
+								
+								<canvas id="lineChart"></canvas>
+							</div>
+						</div>
+						
+
+						<div class="nav_bottom_frame">
+							<div class="nav_bottom">
+								<ul class="list-inline">
+									<li><a href="#" class="nav_open" style="font-size: 13px; color: #717171">Cold</a></li>
+									<li><a href="#" class="nav_open" style="font-size: 13px; color: #717171">Curious</a></li>
+									<li><a href="#" class="nav_open" style="font-size: 13px; color: #717171">Converted</a></li>
+									<li><a href="#" class="nav_open" style="font-size: 13px; color: #717171">Cult</a></li>
+								</ul>
+								<span class="menu_btn"><i class="fa fa-angle-down"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+		
+	</div>
+
+	<div class="menu_item_bottom vhide">
+		<div class="flex_menu_frame">
+			<div class="flex_menu">
+				<span class="menu_btn"><i class="fa fa-angle-up"></i></span>
+				<p>Your Listen Path is displaying your audience on everywhere from <span class="txt_primary">everywhere</span> over the last year.</p>
+
+				<ul class="list-inline">
+					<li code="EU">Europe</li>
+					<li code="AS">Asia</li>
+					<li code="OC">Oceania</li>
+					<li code="AN">Antarctica</li>
+					<li code="AF">Africa</li>
+					<li code="NA">North America</li>
+					<li code="SA">South America</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<script src="/javascripts/jquery.min.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>
+	<script src="/javascripts/Chart.min.js"></script>
+
+	<script type="text/javascript">
+		var vid = document.getElementById("tutorialVideo"); 
+		var check_flag=false;
+		var show_flag=true;
+		var userName=localStorage.user;
+
+		function playVid() { 
+			
+			 vid.play(); 
+		} 
+
+		function pauseVid() { 
+			vid.pause(); 
+		} 
+		
+		function setCookie(cname,cnamevalue,ccheckvalue) {
+			    
+			document.cookie = cname+"="+cnamevalue+"+"+ccheckvalue;
+				
+		}
+
+		$('#checkboxId').click(function(){
+			
+			check_flag=!check_flag;
+			setCookie("_nameCookie",userName,check_flag);
+
+		})
+		function getCookie(cname) {
+			
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0;i<ca.length;i++)
+			{
+				if (ca[i].indexOf(name) == 1) {			
+					var cs= ca[i].substring(name.length+1, ca[i].length);
+					var cv=cs.split("+");
+					if(cv[0].indexOf(localStorage.user)==0)
+					 show_flag=false;
+					  
+				}
+
+			}	
+			
+		}
+		getCookie("_nameCookie");
+        if (show_flag==false) {
+		
+			document.getElementById("tutarialId").style.display = "none";
+			document.getElementById("checkId").style.display = "none";
+				
+		
+		 };
+		 $('#tutarialId').click(function(e) {
+			e.preventDefault();
+			var image_href = $(this).attr("src"); 
+			var slideNum = $('#tutarialId').index(this);
+			if ($('#lightbox').length > 0) {        
+			
+				$('#lightbox').fadeIn(300);
+			
+			} else {                                
+      
+				var lightbox =
+					'<div id="lightbox">' +
+					'<p>Close X</p>' +
+					'<div id="slideshow">' +
+					'<div class="nav">' +
+					'</div>' +
+					'</div>' +
+					'</div>';
+				
+				
+				$('body').append(lightbox);
+				
+				//$('.graph_box').find('#tutarialId').each(function() {
+					var $src ='"http://www.gossettmktg.com/video/dangot.mp4"';// $(this).attr('src');
+					
+					$('#slideshow').append(
+					'<video id="tutorialVideo" class="embed-responsive-item" controls="controls" poster="http://www.gossettmktg.com/video/dangot.png" style="position: relative; top: 8px;">'
+											+'<source src="http://www.gossettmktg.com/video/dangot.mp4" type="video/mp4">'	
+											+'</video>'
+					);
+				//});
+				
+				}
+				$('body').on('click', '#lightbox', function() { 
+					$('#lightbox').fadeOut(300);
+				});
+				
+			 
+		 });
+		
+	</script>
+	<script type="text/javascript">
+		$('.select_frame').click(function(){
+			if ($(this).find('.option_box').hasClass('mx_height')) {
+
+				$(this).find('.option_box').removeClass('mx_height');
+				$(this).find('.choose_box label i').removeClass('rotate');
+				
+			}
+			else
+			{
+				$(this).find('.option_box').addClass('mx_height');
+				$(this).find('.choose_box label i').addClass('rotate');
+			}
+        });
+        
+        $('.create-new-btn').on('click', function() {
+            location.href = "/create_page";
+        });
+	</script>
+	<script type="text/javascript">
+
+		$('.nav_bottom .menu_btn').click(function(){
+			if ($('body').find('.menu_item_bottom').hasClass('vhide')) {
+				$('.menu_item_bottom').removeClass('vhide');
+				$('.menu_item_bottom').addClass('bg_menu_open');
+				$('.flex_menu').addClass('translate_menu');
+			}
+			else
+			{
+				$('body').find('.menu_item_bottom').addClass('vhide');
+			}
+		});
+
+		$('.menu_item_bottom').click(function(){
+			
+			$(this).removeClass('bg_menu_open');
+			$('.flex_menu').removeClass('translate_menu');
+			setTimeout(function(){ 
+				$('.menu_item_bottom').addClass('vhide');
+			}, 500);
+			
+			
+		});
+
+		$('#logout-btn').on('click', function() {
+			localStorage.removeItem('user');
+			localStorage.removeItem('maximum_sale');
+			location.href = '/';
+		});
+
+		$('.menu_item_bottom ul li').on('click', function() {
+			for (var i = 0; i < $('.menu_item_bottom ul li').length; i ++) {
+				$($('.menu_item_bottom ul li')[i]).removeClass("active");
+			}
+
+			$(this).addClass("active");
+
+			getDashboardData($(this).attr('code'));
+		});
+
+		$('.sidebar_left .menu_btn').click(function(){
+			if ($('.main_body').hasClass('sidebar_open')) {
+				$('.main_body').removeClass('sidebar_open')
+				$('.sidebar_left').hasClass('sidebar_open')
+				$('.sidebar_left').removeClass('sidebar_open')
+			}
+
+			else{
+				$('.main_body').addClass('sidebar_open')
+				$('.sidebar_left').addClass('sidebar_open')
+			}
+
+		});
+
+		var ctxL = document.getElementById("lineChart").getContext('2d');
+
+		var chartOpt = {
+			type: 'line',
+			data: {
+				labels: ["", "", "", "", ""],
+				datasets: [
+					{
+						label: "Listeners",
+						data: [0, 0, 0, 0, 0],
+						backgroundColor: [
+							'rgba(0, 137, 132, .2)',
+						],
+						borderColor: [
+							'rgba(49, 208, 162, .7)',
+						],
+						borderWidth: 2,
+						borderDash: [5, 5],
+						fill: false
+					}
+				]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true,
+							fontColor: "white"
+						},
+						gridLines: {
+							display: false ,
+							color: "#FFFFFF"
+						}
+					}],
+					xAxes: [{
+						ticks: {
+							fontColor: "white"
+						},
+						gridLines: {
+							display: false ,
+							color: "#FFFFFF"
+						}
+					}]
+				}
+			}
+		};
+
+		var getDashboardData = function(region) {
+
+			if (!localStorage['user']) {
+				
+			} else {
+				$.ajax({
+					url: '/get_dashboard_data?region=' + region + '&user_id=' + localStorage['user'],
+					type: 'GET',
+					success: function(data){
+						if (data.error) {
+							alert(data.msg);
+						} else {
+							chartOpt.data.datasets[0].data = data.graphData;
+							var myLineChart = new Chart(ctxL, chartOpt);
+
+							$("#total-views").html(data.allListners);
+							$("#social-name").html(data.maxRefferer);
+							$("#social-rate").html(data.maxReffererRate);
+							$("#max-events").html(data.maxEvents);
+							//$("#max-events-rate").html(data.maxEventRate + "%");
+							console.log("result is ...", data);
+						}
+					}
+				});
+			}
+		}
+
+		getDashboardData("");
+
+	</script>
+</body>
+</html>

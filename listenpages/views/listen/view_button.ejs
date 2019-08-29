@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="google-site-verification" content="eXGa2uT6Sny48hiyXCRWPhlgIlTiSef_EvJtLZU84yQ" />
+	<meta name = "format-detection" content = "telephone=no">
+
+	<title>ListenPages</title>
+	<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+	<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+	<link href="/stylesheets/ss_custom.css" rel="stylesheet">
+</head>
+<body id="login_signup">
+    <div class="main_wrapper" style="background: #000000;">
+        <div class="text-wrapper">
+            <p class="text-header"><%= data.text_header.toUpperCase() %></p>
+            <p class="text-body"><%= data.text_body %></p>
+        </div>
+
+        <div class="btn-wrapper">
+            <a class="btn btn-custom" href="<%= data.button_link %>" target="_blank" id="goto-site-btn"><%= data.button_text %></a>
+        </div>
+    </div>
+
+	<script src="/javascripts/jquery.min.js"></script>
+	<script src="/javascripts/bootstrap.min.js"></script>	
+
+	<script>
+		var currentHistoryId = '';
+
+		var guid = function() {
+
+			var nav = window.navigator;
+			var screen = window.screen;
+			var guid = nav.mimeTypes.length;
+			guid += nav.userAgent.replace(/\D+/g, '');
+			guid += nav.plugins.length;
+			guid += screen.height || '';
+			guid += screen.width || '';
+			guid += screen.pixelDepth || '';
+
+			return guid;
+		};
+
+		$.getJSON('https://ipapi.co/json/', function(data) {
+
+			var sendData = {
+                page_id: "<%- data._id %>",
+                content_type: "<%- data.content_type %>",
+				country : data.postal,
+				ipAddr: data.ip,
+				guid: guid(),
+				continent_code: data.continent_code,
+				enteredTime : <%- enteredTime %>,
+				referrer: "<%- referral %>",
+				status: 'curious'
+			}
+
+			$.ajax({
+				url: '/register_history',
+				type: 'POST',
+				data : sendData,
+				success: function (result) {
+					currentHistoryId = result;
+				}
+			});
+
+			$("#goto-site-btn").on('click', function () {
+				$.ajax({
+					url: '/register_history',
+					type: 'POST',
+					data : {
+						page_id: "<%- data._id %>",
+						status: 'converted',
+						content_type: "<%- data.content_type %>",
+						enteredTime : <%- enteredTime %>,
+						history_id: currentHistoryId
+					}
+				});
+			});
+			
+			// $(window).unload(function() {
+			// 	var x = 200;
+			// 	var a = (new Date()).getTime() + x;
+
+			// 	$.ajax({
+			// 		url: '/register_history',
+			// 		type: 'POST',
+			// 		data : sendData
+			// 	});
+
+			// 	while ((new Date()).getTime() < a) {}
+			// });
+
+		});
+		</script>
+</body>
+</html>

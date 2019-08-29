@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="eXGa2uT6Sny48hiyXCRWPhlgIlTiSef_EvJtLZU84yQ" />
+	<meta name = "format-detection" content = "telephone=no">
+
+	<title>ListenPages</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+	
+	<link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+	<link href="/stylesheets/all.min.css" rel="stylesheet">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+	<link href="/stylesheets/ss_custom.css" rel="stylesheet">
+	<link href="/stylesheets/ss_responsive.css" rel="stylesheet">
+	<link href="/stylesheets/bootstrap-duration-picker.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
+    <!-- start Gist JS code--><script>    (function(d,h,w){var gist=w.gist=w.gist||[];gist.methods=['trackPageView','identify','track','setAppId'];gist.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);gist.push(e);return gist;}};for(var i=0;i<gist.methods.length;i++){var c=gist.methods[i];gist[c]=gist.factory(c)}s=d.createElement('script'),s.src="https://widget.getgist.com",s.async=!0,e=d.getElementsByTagName(h)[0],e.appendChild(s),s.addEventListener('load',function(e){},!1),gist.setAppId("nmovrwmg"),gist.trackPageView()})(document,'head',window);</script><!-- end Gist JS code-->
+</head>
+<body>
+	<div class="main_wrapper">
+		<div class="header_top">
+			<div class="logo pull-left">
+                <img src="/images/logo.png">
+			</div>
+			<div class="menu_bar">
+				<nav class="navbar navbar-default">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="close_menu"><img src="/images/icons/cancel.png"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a href="/dashboard">Path</a></li>
+							<li  class="active"><a href="/pages">Pages</a></li>
+							<li><a href="/settings">Settings</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="sidebar_left">
+			<span class="menu_btn"><i class="fa fa-angle-down"></i></span>
+			<div class="menu_bar_side">
+				<ul class="menu_item_side">
+					<li class="active">
+						<a href="#">
+							<i class="fas fa-tachometer-alt"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fas fa-comments"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fas fa-folder-open"></i>
+						</a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout-btn">
+                            <i class="fas fa fa-sign-out"></i>
+                        </a>
+                    </li>
+				</ul>
+			</div>
+		</div>
+        
+        <div class="main_body sec_listenPage" id="create-step1-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main_heading">
+                        <label class="subtitle subtitle_sm txt_primary"><a href="/pages" class="txt_primary"><span><i class="fa fa-angle-left"></i>&nbsp;&nbsp;</span>Back</a></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="right_bar">
+                        <form action="" id="step1_form">
+                            <div class="box_frame pad_25">
+                                <div class="form-group text-center">
+                                    <label class="subtitle">Create a Listen Page</label>
+                                </div>
+                                <div class="form-group text-center">
+                                    <div class="steps_bar">
+                                        <span class="circle active"></span>
+                                        <span class="circle"></span>
+                                        <span class="circle"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form_box">
+                                            <div class="form-group">
+                                                <label>Page Name</label>
+                                                <input type="text" name="name" required placeholder="" id="page_name" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Content Type</label>
+                                                <select name="content_type" id="content_type" class="form-control">
+                                                    <option value="1">Audio</option>
+                                                    <option value="2">Video</option>
+                                                    <option value="3">Text</option>
+                                                    <option value="4">Button</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="form-group" id="duration_wrapper">
+                                                    <label>Max Event Time</label>
+                                                    <input type="text" class="form-control" name="max_event_time" id="duration">
+                                                </div>
+                                                <div class="form-group" id="sale_amount_wrapper" style="display: none;">
+                                                    <label>Sale Amount</label>
+                                                    <input type="number" class="form-control" name="sale_amount" id="sale_amount">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group text-center mt-85">
+                                            <button class="min_150 btn_shadow btn btn_primary btn_rounded">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_body sec_listenPage" id="create-step2-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main_heading">
+                        <label class="subtitle subtitle_sm txt_primary"><a href="#" id="goBackToStep1" class="txt_primary"><span><i class="fa fa-angle-left"></i>&nbsp;&nbsp;</span>Back</a></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="right_bar">
+                        <form action="/create_page_action" method="post" id="step2_form">
+                            <div class="box_frame pad_25">
+                                <div class="form-group text-center">
+                                    <label class="subtitle">Embed Your Content</label>
+                                </div>
+                                <div class="form-group text-center">
+                                    <div class="steps_bar active">
+                                        <span class="circle active"></span>
+                                        <span class="circle active"></span>
+                                        <span class="circle"></span>
+                                    </div>
+                                </div>
+                                <div class="row" id="type_1">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form_box">
+                                            <div class="form-group">
+                                                <label>Embed code</label>
+                                                <textarea class="form-control" placeholder="Place your embed code here..." name="content_embed_code" rows="6" style="resize: none;" id="embed_code"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" id="type_2">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form_box">
+                                            <div class="form-group">
+                                                <label>Header Text</label>
+                                                <input type="text" name="text_header" placeholder="" id="text_header" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Body Text</label>
+                                                <textarea class="form-control" placeholder="" name="text_body" rows="6" style="resize: none;" id="text_body"></textarea>
+                                            </div>
+                                            <div id="type_3">
+                                                <div class="form-group">
+                                                    <label>Button Text</label>
+                                                    <input type="text" name="button_text" placeholder="" id="button_text" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Button Link</label>
+                                                    <input type="text" name="button_link" placeholder="https://abc.com/abcdef" id="button_link" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group text-center mt-85">
+                                            <button class="min_150 btn_shadow btn btn_primary btn_rounded">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main_body sec_listenPage" id="create-step3-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main_heading">
+                        <label class="subtitle subtitle_sm txt_primary"><a href="#" class="txt_primary" id="goBackToStep2"><span><i class="fa fa-angle-left"></i>&nbsp;&nbsp;</span>Back</a></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="right_bar">
+                        <div class="box_frame pad_25">
+                            <div class="form-group text-center">
+                                <label class="subtitle">Woohoo!</label>
+                            </div>
+                            <div class="form-group text-center">
+                                <div class="steps_bar active active_full">
+                                    <span class="circle active"></span>
+                                    <span class="circle active"></span>
+                                    <span class="circle active"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form_box">
+                                        <div class="form-group">
+                                            <h1 style="color: #3f3f3f;font-weight: bold;text-align: center;">Your Listen Page has been created!</h1>
+                                            <strong><input type="text" readonly  class="form-control txt_primary link_box" id="shorten_url" style="float : left;">
+                                                <div class="copytooltip" style="float:right">
+                                                    <button  class="min_100 btn_shadow btn btn_primary btn_rounded " onclick="copyUrl()"  onmouseout="outFunc()" style="float : right;margin-top: 34px">
+                                                        <span class="copytooltiptext" id="myTooltip">Copy to clipboard</span>
+                                                        COPY
+                                                    </button>
+                                                </div>
+                                            </strong>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="text-center mt-25">Now, get out there and start sharing it. We'll start logging your data as soon as we receive some.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="row" id="pixel-wrapper" style="display: none;">
+                                <div class="col-md-12">
+                                    <p class="text-center mt-25">But before you share your link, follow these steps:</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form_box">
+                                        <div class="form-group">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    1. Locate the header code for your website
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="description">
+                                                        Find the <strong>&lt;head&gt; &lt;/head&gt; tags</strong> in your webpage's thank you page after purchase, or locate the <strong>header template</strong> in your CMS or web platform.
+                                                    </div>
+                                                    <pre class="code">&lt;!-- Example --&gt;
+&lt;!DOCTYPE lang="en"&gt;
+&lt;head&gt;
+    &lt;script&gt;...&lt;/script&gt;
+    insert_pixel_code_here
+&lt;/head&gt;
+                                                    </pre>
+                                                </div>
+                                            </div>
+                                            <div class="card" style="margin-bottom: 0;">
+                                                <div class="card-header">
+                                                    2. Copy the entire pixel code and paste it in the website header
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="description">
+                                                        Paste the pixel code at the bottom of the header section, just above the <strong>&lt;/head&gt;</strong>.
+                                                    </div>
+                                                    <pre class="code">&lt;!-- ListenPage Pixel --&gt;
+&lt;script&gt;
+<div id="pixel-code">
+</div>
+&lt;/script&gt;
+&lt;!-- End ListenPage Pixel --&gt;
+                                                    </pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-center mt-85">
+                                        <a href="/pages" class="min_150 btn_shadow btn btn_primary btn_rounded">Go to Pages</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+	<script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/bootstrap-duration-picker-debug.js"></script>
+    <script type="text/javascript">
+       function copyUrl(){
+        var copyText = document.getElementById("shorten_url");
+        copyText.select();
+        document.execCommand("copy");
+
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copied: " + copyText.value;
+
+       }
+       function outFunc() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy to clipboard";
+       }
+       
+    </script>
+    <script type="text/javascript">
+
+    $('#duration').durationPicker({
+        showSeconds: true,
+        showDays: false
+      });
+    
+        $('.sidebar_left .menu_btn').click(function(){
+            if ($('.main_body').hasClass('sidebar_open')) {
+                $('.main_body').removeClass('sidebar_open')
+                $('.sidebar_left').hasClass('sidebar_open')
+                $('.sidebar_left').removeClass('sidebar_open')
+            }
+
+            else{
+                $('.main_body').addClass('sidebar_open')
+                $('.sidebar_left').addClass('sidebar_open')
+            }
+
+        });
+
+        $('#logout-btn').on('click', function() {
+			localStorage.removeItem('user');
+			localStorage.removeItem('maximum_sale');
+			location.href = '/';
+		});
+
+        $('#goBackToStep1').on('click', function() {
+            $('#create-step2-wrapper').css('display', 'none');
+            $('#create-step1-wrapper').css('display', '');
+        });
+
+        $('#goBackToStep2').on('click', function() {
+            $('#create-step3-wrapper').css('display', 'none');
+
+            displayFieldsByType($('#content_type').val());
+
+            $('#create-step2-wrapper').css('display', '');
+        });
+
+        $('#content_type').on('change', function() {
+            if ($(this).val() == 4) {
+
+                $("#sale_amount_wrapper").css("display", "");
+                $("#duration_wrapper").css("display", "none");
+
+                $("#sale_amount").attr('required', true);
+                
+            } else {
+                
+                $("#sale_amount_wrapper").css("display", "none");
+                $("#duration_wrapper").css("display", "");
+
+                $("#sale_amount").removeAttr('required');
+
+            }
+        });
+
+        var init = function() {
+            $('#create-step2-wrapper').css('display', 'none');
+            $('#create-step3-wrapper').css('display', 'none');
+        }
+
+        var displayFieldsByType = function(type) {
+            $("#type_1").css('display', 'none');
+            $("#type_2").css('display', 'none');
+            $("#type_3").css('display', 'none');
+
+            $("#embed_code").removeAttr('required');
+            $("#text_header").removeAttr('required');
+            $("#text_body").removeAttr('required');
+            $("#button_text").removeAttr('required');
+            $("#button_link").removeAttr('required');
+
+            if (type == 1 || type == 2) {
+                $("#type_1").css('display', '');
+
+                $("#embed_code").attr('required', true);
+            } else {
+                $("#type_2").css('display', '');
+
+                $("#text_header").attr('required', true);
+                $("#text_body").attr('required', true);
+                
+                if (type == 4) {
+                    $("#type_3").css('display', '');
+
+                    $("#button_text").attr('required', true);
+                    $("#button_link").attr('required', true);
+                }
+            }
+        }
+
+        $('#step1_form').submit(function(e){
+            e.preventDefault();
+
+            if (localStorage['maximum_sale'] == 0 && $('#content_type').val() == 4) {
+
+                alert("For creating button page, Please go to setting page and insert Maximum Sale value.");
+
+            } else {
+
+                $('#create-step1-wrapper').css('display', 'none');
+
+                displayFieldsByType($('#content_type').val());
+
+                $('#create-step2-wrapper').css('display', '');
+
+            }
+        });
+
+        $('#step2_form').submit(function(e){
+            e.preventDefault();
+
+            var url = $('#embed_code').val();
+
+            if ($('#content_type').val() == 3) {
+                url = "https://www.google.com/";
+            } else if ($('#content_type').val() == 4) {
+                url = $('#button_link').val();
+            }
+
+            //var pattern = /^(http|https)?:\/\/[a-zA-Z0-9-\.]+\.[a-z]{2,4}/;
+            //var isValid = pattern.test(url);
+
+            //if (isValid) {
+                $.ajax({
+                    url: $('#step2_form').attr('action'),
+                    type: 'POST',
+                    data : $('#step1_form').serialize() + '&' +  $('#step2_form').serialize() + '&user_id=' + localStorage['user'] + '&maximum_sale=' + localStorage['maximum_sale'],
+                    success: function(data){
+                        if (data.error) {
+                            alert(data.msg);
+                        } else {
+                            $('#shorten_url').val(data.data.short_id);
+
+                            if (data.data.pixel != '') {
+                                $('#pixel-code').html(data.data.pixel);
+                                $('#pixel-wrapper').css('display', '');
+                            } else {
+                                $('#pixel-wrapper').css('display', 'none');
+                            }
+
+                            $('#create-step2-wrapper').css('display', 'none');
+                            $('#create-step3-wrapper').css('display', '');
+                        }
+                    }
+                });
+            //} else {
+                //alert("Please Insert Valid Embed Link!");
+            //}
+        });
+
+        init();
+    </script>
+
+</body>
+</html>
