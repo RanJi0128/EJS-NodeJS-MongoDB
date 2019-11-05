@@ -18,7 +18,7 @@
     "inbound": "0.0.6",
     "json-comments": "^0.2.1",
     "md5": "^2.2.1",
-    "mongoose": "^5.4.19",
+    "mongoose": "^5.7.5",
     "mongoose-unique-validator": "^2.0.2",
     "morgan": "~1.9.0",
     "referrer": "^1.0.2",
